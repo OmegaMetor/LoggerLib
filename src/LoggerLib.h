@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <ctime>
 
 class Logger
 {
@@ -7,11 +8,12 @@ private:
     static Logger *logger;
     Logger(){
     };
+    static time_t startTime;
 
 public:
     struct LogOptions{
         int LogLevel = LogLevel::INFO;
-        std::string fmt = "[%L] at line %LN in [%F]: %M";
+        std::string fmt = "[%TH:%TMN:%TS] [%L] at line %LN in [%F]: %M\n";
         std::string LogLevelNames[4] = {
             "DEBUG",
             "INFO",
